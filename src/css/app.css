@@ -17,6 +17,26 @@ Header
     background: #004074;
     line-height: 32px;
     text-align: center;
+    text-transform: uppercase;
+}
+.header--logo {
+    display: inline-block;
+    height: 20px;
+    width: auto;
+    position: relative;
+    top: 6px;
+}
+.header--color {
+    color: #f74c4b;
+}
+@media(max-width: 330px) {
+    .header { 
+        font-size: 14px;
+    }
+    .header--logo {
+        height: 16px;
+        top: 4px;
+    }
 }
 /*
 Datebar
@@ -96,12 +116,16 @@ actlist
 .actlist--left {
     display: table-cell;
     width: 50px;
-    padding: 5px 0 5px 5px;
+    padding: 5px;
     text-align: right;
-    vertical-align: middle;
+    vertical-align: top;
 }
-.catilist--time {
+.actlist--time {
     font-size: 20px;
+}
+.actlist--suffix {
+    font-size: 12px;
+    text-transform: uppercase;
 }
 .actlist--right {
     display: table-cell;
@@ -114,14 +138,14 @@ actlist
 .actlist--stage {
     font-size: 14px;
 }
-.actlist--stage .fa {
+.actlist--inner .fa {
     margin-right: 5px;
 }
 .actlist--headliner,
 .actlist--local,
 .actlist--pick,
 .actlist--favorite,
-.actlist--bio {
+.actlist--genre {
     display: inline-block;
     font-size: 10px;
     line-height: 10px;
@@ -137,14 +161,35 @@ actlist
 .actlist--pick {
     background: green;
 }
-.actlist--favorite {
+.actlist--favorite,
+.actlist--genre {
     background: #999;
 }
 .actlist--bio {
-    background: #999;
+    display: inline-block;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 3px;
+    margin-right: 6px;
+    color: #222;
+    border: 1px solid #222;
+    text-transform: uppercase;
+    background: #fff;
 }
-.actlist--favorite .fa {
-    margin-right: 4px;
+.act-biowrapper {
+    display: none;
+}
+.act-bioleft {
+    display: table-cell;
+    width: 50px;
+}
+.act-bioright {
+    display: table-cell;
+    font-size: 14px;
+    padding: 0px 5px 5px 5px;
+}
+.actlist-more .act-biowrapper {
+    display: table-row;
 }
 /*
 stages, genres

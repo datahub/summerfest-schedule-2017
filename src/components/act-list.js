@@ -17,7 +17,7 @@ class ActList extends Component {
         } else {
             return (
                 <div className="actlist actlist--empty">
-                    Remove some filters or add some favorites.
+                    Please remove some filters to see acts.
                 </div>
             )
         }

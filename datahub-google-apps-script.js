@@ -140,7 +140,17 @@ function exportJson() {
   }
 
   var ts = new Date().toString();
-
+  
+  output.sort(function(a,b){
+    if (a.date_time < b.date_time) {
+      return -1;
+    }
+    if (a.date_time > b.date_time) {
+      return 1;
+    }
+    return 0;
+  });
+  
   var final = {
     data: output,
     timestamp: ts
@@ -222,4 +232,10 @@ function getStagesAndGenres(){
   
   //Logger.log(finalJSON);
   saveToS3(finalJSON, 'meta');
+}
+
+function getMediaFilename(d, artist) {
+  var monthNames = ["January", "February", "March", "April", "May", "JUNE", "JULY", "August", "September", "October", "November", "December"];
+  var filename = monthNames[d.getMonth()] + ' ' + d.getDate() + ' ' + artist.toUpperCase() + '.JPG';
+  return filename.replace(/ /g, '%20');
 }
