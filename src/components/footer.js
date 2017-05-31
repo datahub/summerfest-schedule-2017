@@ -20,12 +20,6 @@ class Footer extends Component {
         this.props.onFiltersChange(filter, value);
     }
     render() {
-        /*
-        <div className={"footer--item" + (this.props.filters.favorites ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="favorites">
-            <i className="footer--icon fa fa-star" aria-hidden="true" data-filter="favorites"></i>
-            <div className="footer--name">Favorites</div>
-        </div>
-        */
         return (
             <div className="footer">
                 <div className={"footer--item" + (this.props.filters.headliners ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="headliners">
@@ -43,6 +37,10 @@ class Footer extends Component {
                 <div className={"footer--item" + (this.props.filters.picks ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="picks">
                     <i className="footer--icon fa fa-user" aria-hidden="true" data-filter="picks"></i>
                     <div className="footer--name">Piet's Picks</div>
+                </div>
+                <div className={"footer--item" + (this.props.filters.favorites ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="favorites">
+                    <i className="footer--icon fa fa-star" aria-hidden="true" data-filter="favorites"></i>
+                    <div className="footer--name">Your Picks</div>
                 </div>
             </div>
         );

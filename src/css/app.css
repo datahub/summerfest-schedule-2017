@@ -124,6 +124,8 @@ actlist
     font-size: 20px;
 }
 .actlist--suffix {
+    position: relative;
+    top: -5px;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -144,8 +146,8 @@ actlist
 .actlist--headliner,
 .actlist--local,
 .actlist--pick,
-.actlist--favorite,
-.actlist--genre {
+.actlist--genre,
+.actlist--bio {
     display: inline-block;
     font-size: 10px;
     line-height: 10px;
@@ -161,16 +163,22 @@ actlist
 .actlist--pick {
     background: green;
 }
-.actlist--favorite,
 .actlist--genre {
     background: #999;
 }
+.actlist--favorite {
+    float: right;
+    font-size: 20px;
+    line-height: 20px;
+    padding-left: 5px;
+    color: #999;
+    vertical-align: middle;
+}
+.actlist--favorite .fa-star {
+    color: #f74c4b;
+}
 .actlist--bio {
-    display: inline-block;
-    font-size: 10px;
-    line-height: 10px;
     padding: 3px;
-    margin-right: 6px;
     color: #222;
     border: 1px solid #222;
     text-transform: uppercase;
@@ -262,7 +270,7 @@ footer
 }
 .footer--item {
     display: inline-block;
-    width: 25%;
+    width: 20%;
     text-align: center;
     color: #004074;
     user-select: none;

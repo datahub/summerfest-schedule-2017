@@ -131,10 +131,10 @@ class App extends Component {
         ).then(function(data) {
             this.setState({"acts": JSON.parse(data).data});
             this.filterActs();
+            window.scrollTo(0, 0);
         }.bind(this)).catch((error) => {
             console.log('failed to load: ' + dayNum, error.message);
         });
-        window.scrollTo(0, 0);
     }
     componentDidMount = () => {
         this.getActsForDay(this.state.selectedDayNum);

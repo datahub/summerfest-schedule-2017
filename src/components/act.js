@@ -4,7 +4,8 @@ class ActList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: false,
+            favorited: false
         };
     }
     formatTime = (s) => {
@@ -25,11 +26,28 @@ class ActList extends Component {
     handleMoreToggle = () => {
         this.setState({show: !this.state.show});
     }
+    handleFavoritedToggle = () => {
+        let favs = window.localStorage.getItem('favs');
+        if (favs === null) {
+            favs = [];
+        } else {
+            favs = JSON.parse(favs);
+        }
+        if (this.state.favorited) {
+            let pos = favs.indexOf(this.props.data.artist);
+            if (pos !== -1) {
+                favs.splice(pos, 1);
+            }
+        } else {
+            favs.push(this.props.data.artist);
+        }
+        window.localStorage.setItem('favs', JSON.stringify(favs));
+        this.setState({favorited: !this.state.favorited});
+    }
     render() {
         const act = this.props.data;
-        // <span className="actlist--favorite"><i className="fa fa-star" aria-hidden="true"></i>favorite</span>
         return (
-            <div className={"actlist--item" + (this.state.show ? ' actlist-more' : '')} onClick={this.handleMoreToggle}>
+            <div className={"actlist--item" + (this.state.show ? ' actlist-more' : '')}>
                 <div className="actlist--inner">
                     <div className="actlist--left">
                         <span className="actlist--time">{this.formatTime(act.date_time)}</span>
@@ -37,8 +55,16 @@ class ActList extends Component {
                         <span className="actlist--suffix">{this.formatSuffix(act.date_time)}</span>
                     </div>
                     <div className="actlist--right">
-                        <div className="actlist--artist"><strong>{act.artist}</strong></div>
-                        <div className="actlist--stage"><i className="fa fa-map-marker" aria-hidden="true"></i>{act.stage}</div>
+                        <div className="actlist--artist">
+                            <strong>{act.artist}</strong>
+                        </div>
+                        <span className="actlist--favorite" onClick={this.handleFavoritedToggle}>
+                            <i className={"fa" + (this.state.favorited ? ' fa-star' : ' fa-star-o')} aria-hidden="true"></i>
+                        </span>
+                        <div className="actlist--stage">
+                            <i className="fa fa-map-marker" aria-hidden="true"></i>{act.stage}
+                        </div>
+                        
                         {act.genre ? (
                             <span className="actlist--genre"><i className="fa fa-music" aria-hidden="true"></i>{act.genre}</span>
                         ) : (
@@ -60,7 +86,7 @@ class ActList extends Component {
                             ''
                         )}
                         {act.bio ? (
-                            <span className="actlist--bio">read more</span>
+                            <span className="actlist--bio" onClick={this.handleMoreToggle}>read more</span>
                         ) : (
                             ''
                         )}
