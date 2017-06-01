@@ -13,6 +13,7 @@ class DateBar extends Component {
     handleClick = (e) => {
         e.preventDefault();
         this.props.onSelectedDayChange(e.target.dataset.date, e.target.dataset.num);
+        window.projectsEvent('summerfest-favorites','select day',e.target.dataset.num);
     }
     render() {
         let dates = this.props.dates.map((day, i) => {

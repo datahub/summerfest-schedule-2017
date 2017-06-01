@@ -66,7 +66,7 @@ class App extends Component {
                 ],
                 genreShow: false,
                 picks: false,
-                favorites: false
+                favorited: false
             },
             allStages: [
                 "JoJo's Martini Lounge",
@@ -112,6 +112,11 @@ class App extends Component {
                     valid = false;
                 }
             }
+            if (filters.favorited) {
+                if (!this.isFavorited(act.id)) {
+                    valid = false;
+                }
+            }
             if (filters.stages.length !== 12) {
                 if (filters.stages.indexOf(act.stage) === -1) {
                     valid = false;
@@ -138,6 +143,10 @@ class App extends Component {
     }
     componentDidMount = () => {
         this.getActsForDay(this.state.selectedDayNum);
+    }
+    isFavorited(id) {
+        let favs = window.localStorage.getItem('summerfest-favorites');
+        return (favs !== null && favs.indexOf(id) > -1);
     }
     formatDate = (d) => {
         return (d.getMonth()+1) + '/' + d.getDate();

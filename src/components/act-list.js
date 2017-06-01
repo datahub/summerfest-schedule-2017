@@ -4,9 +4,9 @@ import Act from './act.js';
 class ActList extends Component {
     render() {
         if (this.props.acts.length > 0) {
-            let acts = this.props.acts.map((act, i) => {
+            let acts = this.props.acts.map((act) => {
                 return (
-                    <Act key={i} data={act} /> 
+                    <Act key={act.id} data={act} /> 
                 );
             });
             return (
@@ -17,7 +17,7 @@ class ActList extends Component {
         } else {
             return (
                 <div className="actlist actlist--empty">
-                    Please remove some filters to see acts.
+                    Please remove some filters or add some favorites to see acts.
                 </div>
             )
         }

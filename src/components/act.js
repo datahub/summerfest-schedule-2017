@@ -5,8 +5,12 @@ class ActList extends Component {
         super(props);
         this.state = {
             show: false,
-            favorited: false
+            favorited: this.isFavorited(this.props.data.id)
         };
+    }
+    isFavorited(id) {
+        let favs = window.localStorage.getItem('summerfest-favorites');
+        return (favs !== null && favs.indexOf(id) > -1);
     }
     formatTime = (s) => {
         let t = new Date(s);
@@ -27,21 +31,23 @@ class ActList extends Component {
         this.setState({show: !this.state.show});
     }
     handleFavoritedToggle = () => {
-        let favs = window.localStorage.getItem('favs');
+        let favs = window.localStorage.getItem('summerfest-favorites');
         if (favs === null) {
             favs = [];
         } else {
             favs = JSON.parse(favs);
         }
         if (this.state.favorited) {
-            let pos = favs.indexOf(this.props.data.artist);
+            let pos = favs.indexOf(this.props.data.id);
             if (pos !== -1) {
                 favs.splice(pos, 1);
+                window.projectsEvent('summerfest-favorites','remove',this.props.data.id);
             }
         } else {
-            favs.push(this.props.data.artist);
+            favs.push(this.props.data.id);
+            window.projectsEvent('summerfest-favorites','add',this.props.data.id);
         }
-        window.localStorage.setItem('favs', JSON.stringify(favs));
+        window.localStorage.setItem('summerfest-favorites', JSON.stringify(favs));
         this.setState({favorited: !this.state.favorited});
     }
     render() {
