@@ -31,7 +31,7 @@ class Footer extends Component {
                     <i className="footer--icon fa fa-map-marker" aria-hidden="true" data-filter="stages"></i>
                     <div className="footer--name">Stages</div>
                 </div>
-                <div className={"footer--item" + (this.props.filters.genres.length !== 10 ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="genres">
+                <div className={"footer--item" + (this.props.filters.genres.length !== 11 ? ' footer--active' : '')} onClick={this.handleFilterToggle} data-filter="genres">
                     <i className="footer--icon fa fa-music" aria-hidden="true" data-filter="genres"></i>
                     <div className="footer--name">Genres</div>
                 </div>

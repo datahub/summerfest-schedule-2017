@@ -62,7 +62,8 @@ class App extends Component {
                     "Country",
                     "Pop",
                     "EDM",
-                    "Soul"
+                    "Soul",
+                    "Hip-hop"
                 ],
                 genreShow: false,
                 picks: false,
@@ -92,7 +93,8 @@ class App extends Component {
                 "Country",
                 "Pop",
                 "EDM",
-                "Soul"
+                "Soul",
+                "Hip-hop"
             ],
             acts: [],
             visibleActs: []
