@@ -63,7 +63,12 @@ class App extends Component {
                     "Pop",
                     "EDM",
                     "Soul",
-                    "Hip-hop"
+                    "Hip-hop",
+                    "World Music",
+                    "Latin",
+                    "Reggae",
+                    "Jazz",
+                    "Funk",
                 ],
                 genreShow: false,
                 picks: false,
@@ -94,7 +99,12 @@ class App extends Component {
                 "Pop",
                 "EDM",
                 "Soul",
-                "Hip-hop"
+                "Hip-hop",
+                "World Music",
+                "Latin",
+                "Reggae",
+                "Jazz",
+                "Funk",
             ],
             acts: [],
             visibleActs: []
