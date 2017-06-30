@@ -69,6 +69,7 @@ Datebar
     border: 1px solid #004074;
     user-select: none;
     outline: none;
+    cursor: pointer;
 }
 .datebar--item:focus {
     outline: none;

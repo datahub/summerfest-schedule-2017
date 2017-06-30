@@ -31,10 +31,13 @@ class App extends Component {
         this.handleStageChange = this.handleStageChange.bind(this);
         this.handleGenreChange = this.handleGenreChange.bind(this);
 
-        let selectedDay = (now >= summerfestDates[0] ? this.formatDate(now) : summerfestDates[0]);
+        let selectedDay = (now >= summerfestDates[10] ? summerfestDates[0] : now);
+        let summerfestDatesIndex = summerfestDates.map(Number).indexOf(now.setHours(0, 0, 0, 0)) + 1;
+        let selectedDayNum = (summerfestDatesIndex > 0) ? summerfestDatesIndex : 1;
+
         this.state = {
             selectedDay: this.formatDate(selectedDay),
-            selectedDayNum: "1",
+            selectedDayNum: selectedDayNum,
             filters: {
                 headliners: false,
                 stages: [
